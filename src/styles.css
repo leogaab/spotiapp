@@ -18,6 +18,9 @@ hr {
     width: 150px;
 }
 
+.card {
+    width: 300px !important;
+}
 .card-title,
 .card-text {
     color: black;
