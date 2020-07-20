@@ -6,7 +6,11 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class SpotifyService {
 
+  // Token expires after an hour
+  token = 'BQC_6kU5vu5wnZTibQBxhjbzaUL4dQvVfKfSJzpKiK';
+
   newReleasesUrl = 'https://api.spotify.com/v1/browse/new-releases';
+  searchUrl = 'https://api.spotify.com/v1/search';
 
   constructor(
     private http: HttpClient
@@ -16,9 +20,19 @@ export class SpotifyService {
 
   getNewReleases() {
     const headers = new HttpHeaders({
-      Authorization: 'Bearer BQDq6KM4xg4GNjOq3XtvvovJjYjwjRG6A5Eg-tIdd629GfYMqi5UnoD2OpoysSJOq8yOgCOd2eHC0nK9tnU'
+      Authorization: `Bearer ${this.token}`
     });
 
     return this.http.get(this.newReleasesUrl, {headers});
+  }
+
+  // Finish get artist
+  getArtist(searchValue: string) {
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${this.token}`
+    });
+
+    return this.http.get(this.newReleasesUrl, {headers});
+
   }
 }
