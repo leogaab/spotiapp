@@ -7,7 +7,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 export class SpotifyService {
 
   // Token expires after an hour
-  token = 'BQC_6kU5vu5wnZTibQBxhjbzaUL4dQvVfKfSJzpKiK';
+  token = '';
 
   newReleasesUrl = 'https://api.spotify.com/v1/browse/new-releases';
   searchUrl = 'https://api.spotify.com/v1/search';
