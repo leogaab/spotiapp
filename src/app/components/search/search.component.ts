@@ -8,6 +8,8 @@ import { SpotifyService } from 'src/app/services/spotify.service';
 })
 export class SearchComponent implements OnInit {
 
+  searchedArtist: [] = [];
+
   constructor(
     private spotifyService: SpotifyService
   ) { }
@@ -18,6 +20,9 @@ export class SearchComponent implements OnInit {
   onSearch(searchValue: string) {
     console.log('Search: ', searchValue);
     this.spotifyService.getArtist(searchValue)
-      .subscribe( response => console.log(response));
+      .subscribe( (response: any) => {
+        // console.log(response);
+        this.searchedArtist = response;
+      });
   }
 }
