@@ -1,6 +1,6 @@
 <div class="card-columns">
   <div class="card" *ngFor="let newRelease of newReleases; let i = index">
-    <img [src]="newRelease.images[0].url" class="card-img-top" alt="newRelease.name">
+    <img [src]="newRelease.images | noimage" class="card-img-top" alt="newRelease.name">
     <div class="card-body">
       <h5 class="card-title">{{ newRelease.name }}</h5>
       <p class="card-text">

@@ -9,7 +9,7 @@ import { map } from 'rxjs/operators';
 export class SpotifyService {
 
   // Token expires after an hour
-  token = 'BQAunWUTBeFQlkDKtrfOfqP8PypybiWz1g1h1Qz5Q2gP54N2kNeuIq-31faC774BwVM-nU6t57uLrleb4Ow';
+  token = 'BQCyI6aeeVOY87QWQEVwgWa8Dgr99AKmgFAT9znkNoaHPJGAnMH6VZ2N901GMehijyCNXxZlYaxUSvS2oT4';
 
   url = 'https://api.spotify.com/v1/';
 
@@ -34,7 +34,7 @@ export class SpotifyService {
 
     return this.getQuery(newReleasesUrl).pipe( map( (data: any) => data.albums.items) );
   }
-  
+
   getArtist(searchValue: string) {
     const searchUrl = 'search?q=' + searchValue + '&type=artist&limit=15&';
 
