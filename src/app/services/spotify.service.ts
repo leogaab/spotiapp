@@ -11,8 +11,7 @@ export class SpotifyService {
   // Token expires after an hour
   token = 'BQAunWUTBeFQlkDKtrfOfqP8PypybiWz1g1h1Qz5Q2gP54N2kNeuIq-31faC774BwVM-nU6t57uLrleb4Ow';
 
-  newReleasesUrl = 'https://api.spotify.com/v1/browse/new-releases';
-  searchUrl = 'https://api.spotify.com/v1/search';
+  url = 'https://api.spotify.com/v1/';
 
   constructor(
     private http: HttpClient
@@ -20,22 +19,25 @@ export class SpotifyService {
     console.log('SpotifyService listo');
   }
 
-  getNewReleases() {
+  getQuery( url: string) {
+    const query = this.url + url;
+
     const headers = new HttpHeaders({
       Authorization: `Bearer ${this.token}`
     });
 
-    return this.http.get(this.newReleasesUrl, {headers})
-           .pipe( map( (data: any) => data.albums.items) );
+    return this.http.get(query, {headers});
   }
 
-  // Finish get artist
-  getArtist(searchValue: string) {
-    const headers = new HttpHeaders({
-      Authorization: `Bearer ${this.token}`
-    });
+  getNewReleases() {
+    const newReleasesUrl = 'browse/new-releases';
 
-    return this.http.get(`${ this.searchUrl }?q=${ searchValue }&type=artist&limit=15&`, {headers})
-           .pipe( map( (data: any) => data.artists.items) );
+    return this.getQuery(newReleasesUrl).pipe( map( (data: any) => data.albums.items) );
+  }
+  
+  getArtist(searchValue: string) {
+    const searchUrl = 'search?q=' + searchValue + '&type=artist&limit=15&';
+
+    return this.getQuery(searchUrl).pipe( map( (data: any) => data.artists.items) );
   }
 }
